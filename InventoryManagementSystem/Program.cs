@@ -22,6 +22,10 @@ public class Program
         quantity = Convert.ToInt32(Console.ReadLine());
         Product newProduct = new Product(name, price, quantity);
         Inventory.AddAnItem(newProduct);
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine(newProduct.ToString());
+        Console.WriteLine("Was added successfully");
+        Console.WriteLine("----------------------------------------");
         MainPage();
     }
 
@@ -80,6 +84,29 @@ public class Program
         return;
     }
 
+    static void DeleteAProduct()
+    {
+        Console.WriteLine("Please enter the name of the product");
+        Console.ReadLine();
+        string? name = Console.ReadLine();
+        Product productToDelete = Inventory.GetItemByName(name);
+        if (productToDelete.IsNull)
+        {
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("Sorry there is no product with such name");
+            Console.WriteLine("----------------------------------------");
+            MainPage();
+            return;
+        }
+        Inventory.DeletItem(productToDelete);
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine(productToDelete.ToString());
+        Console.WriteLine("Was deleted successfully");
+        Console.WriteLine("----------------------------------------");
+        MainPage();
+        return;
+    }
+
     public static void MainPage()
     {
         Console.WriteLine("Welcome to Your Inventory");
@@ -106,6 +133,7 @@ public class Program
                 EditAProduct();
                 break;
             case '4':
+                DeleteAProduct();
                 break;
             case '5':
                 break;
