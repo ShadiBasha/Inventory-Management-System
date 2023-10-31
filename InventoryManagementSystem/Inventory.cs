@@ -9,4 +9,9 @@ public class Inventory <T>
         _storage = storage;
     }
 
+    public void AddAnItem(T item)
+    {
+        _storage?.Add(item);
+    }
+    
 }
