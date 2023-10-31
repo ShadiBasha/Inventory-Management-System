@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagementSystem;
 
-public class Inventory <T>
+public class Inventory <T> where T : Storable
 {
     private List<T>? _storage;
 
@@ -28,6 +28,12 @@ public class Inventory <T>
                 allItems += item?.ToString() + "\n";
             }
         return allItems;
+    }
+
+    public T GetItemByName(string name)
+    {
+        T item = _storage.Find(i => i.Name.Equals(name));
+        return item;
     }
 
 }
