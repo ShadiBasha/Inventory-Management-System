@@ -24,7 +24,7 @@ public class Program
         Inventory.AddAnItem(newProduct);
         Console.WriteLine("----------------------------------------");
         Console.WriteLine(newProduct.ToString());
-        Console.WriteLine("Was added successfully");
+        Console.WriteLine("         Was added successfully");
         Console.WriteLine("----------------------------------------");
         MainPage();
     }
@@ -41,16 +41,9 @@ public class Program
 
     public static void EditAProduct()
     {
-        Console.WriteLine("Please enter the name of the product");
-        Console.ReadLine();
-        string? name = Console.ReadLine();
-        Product productToEdit = Inventory.GetItemByName(name);
+        Product productToEdit = GetProductByName();
         if (productToEdit.IsNull)
         {
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Sorry there is no product with such name");
-            Console.WriteLine("----------------------------------------");
-            MainPage();
             return;
         }
         Console.WriteLine("This is the product");
@@ -86,22 +79,45 @@ public class Program
 
     static void DeleteAProduct()
     {
-        Console.WriteLine("Please enter the name of the product");
-        Console.ReadLine();
-        string? name = Console.ReadLine();
-        Product productToDelete = Inventory.GetItemByName(name);
+        Product productToDelete = GetProductByName();
         if (productToDelete.IsNull)
         {
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Sorry there is no product with such name");
-            Console.WriteLine("----------------------------------------");
-            MainPage();
             return;
         }
         Inventory.DeletItem(productToDelete);
         Console.WriteLine("----------------------------------------");
         Console.WriteLine(productToDelete.ToString());
-        Console.WriteLine("Was deleted successfully");
+        Console.WriteLine("        Was deleted successfully");
+        Console.WriteLine("----------------------------------------");
+        MainPage();
+    }
+
+    static Product GetProductByName()
+    {
+        Console.WriteLine("Please enter the name of the product");
+        Console.ReadLine();
+        string? name = Console.ReadLine();
+        Product product = Inventory.GetItemByName(name);
+        if (product.IsNull)
+        {
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("Sorry there is no product with such name");
+            Console.WriteLine("----------------------------------------");
+            MainPage();
+            return new Product();
+        }
+        return product;
+    }
+
+    static void SearchForAProduct()
+    {
+        Product searchedForProduct = GetProductByName();
+        if (searchedForProduct.IsNull)
+        {
+            return;
+        }
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine(searchedForProduct.ToString());
         Console.WriteLine("----------------------------------------");
         MainPage();
         return;
@@ -136,8 +152,8 @@ public class Program
                 DeleteAProduct();
                 break;
             case '5':
+                SearchForAProduct();
                 break;
-                _ : break;
         }
     }
 
