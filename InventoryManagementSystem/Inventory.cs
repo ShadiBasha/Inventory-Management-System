@@ -19,4 +19,15 @@ public class Inventory <T>
         _storage?.Add(item);
     }
 
+    public string ViewAllItems()
+    {
+        var allItems = "";
+        if (_storage != null)
+            foreach (var item in _storage)
+            {
+                allItems += item?.ToString() + "\n";
+            }
+        return allItems;
+    }
+
 }
