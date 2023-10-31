@@ -23,5 +23,8 @@ public class Product : IStorable
         Quantity = quantity;
         _numberOfProuducts++;
     }
-    
+    public override string ToString()
+    {
+        return $"{_productNumber} : Name : {Name}, Quantity: {Quantity}";
+    }
 }
