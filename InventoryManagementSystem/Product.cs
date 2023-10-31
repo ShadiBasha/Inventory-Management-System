@@ -1,29 +1,40 @@
-﻿namespace InventoryManagementSystem;
+﻿using System.Data.SqlTypes;
 
-public class Product : Storable
+namespace InventoryManagementSystem;
+
+public class Product : INullable
 {
+    public int Quantity { get; set; }
+    public string Name { get; set; }
+    public int Price { get; set; }
+    public bool IsNull { get; set; }
+    
     private static int _numberOfProducts;
     
     private int _productNumber;
-
+    
     public Product()
     {
-        _productNumber = _numberOfProducts;
-        Name = "Product" + _productNumber;
+        IsNull = true;
+        _productNumber = -1;
+        Name = "";
+        Price = 0;
         Quantity = 0;
-        _numberOfProducts++;
     } 
 
-    public Product(string name, int quantity)
+    public Product(string name, int price, int quantity)
     {
+        IsNull = false;
         _productNumber = _numberOfProducts;
         Name = name;
+        Price = price;
         Quantity = quantity;
         _numberOfProducts++;
     }
 
     public override string ToString()
     {
-        return $"{_productNumber} : Name : {Name}, Quantity: {Quantity}";
+        return $"{_productNumber} : Name : {Name}, Price : {Price}, Quantity: {Quantity}";
     }
+
 }
