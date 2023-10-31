@@ -1,20 +1,20 @@
 ﻿namespace InventoryManagementSystem;
 
-public class Inventory <T> where T : Storable
+public class Inventory
 {
-    private List<T>? _storage;
+    private List<Product>? _storage;
 
     public Inventory()
     {
-        _storage = new List<T>();
+        _storage = new List<Product>();
     }
     
-    public Inventory(List<T> storage)
+    public Inventory(List<Product> storage)
     {
         _storage = storage;
     }
 
-    public void AddAnItem(T item)
+    public void AddAnItem(Product item)
     {
         _storage?.Add(item);
     }
@@ -30,10 +30,17 @@ public class Inventory <T> where T : Storable
         return allItems;
     }
 
-    public T GetItemByName(string name)
+    public Product GetItemByName(string name)
     {
-        T item = _storage.Find(i => i.Name.Equals(name));
-        return item;
+        foreach (Product item in _storage)
+        {
+            if (item.Name.Equals(name))
+            {
+                return item;
+            }
+        }
+
+        return new Product();
     }
 
 }
