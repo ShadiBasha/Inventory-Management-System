@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Runtime.InteropServices.ComTypes;
 
 namespace InventoryManagementSystem;
@@ -23,6 +24,16 @@ public class Program
         MainPage();
     }
 
+    public static void ViewProducts()
+    {
+        Console.Clear();
+        Console.WriteLine("-------------------------------------\n");
+        Console.WriteLine("Products in the inventory");
+        Console.WriteLine(Inventory.ViewAllItems());
+        Console.WriteLine("-------------------------------------");
+        MainPage();
+    }
+
     public static void MainPage()
     {
         Console.WriteLine("Welcome to Your Inventory");
@@ -42,6 +53,7 @@ public class Program
                 AddAProduct();
                 break;
             case '2': 
+                ViewProducts();
                 break;
             case '3': 
                 break;
@@ -56,7 +68,6 @@ public class Program
     public static int Main()
     {
         MainPage();
-
         return 0;
     }
 }
