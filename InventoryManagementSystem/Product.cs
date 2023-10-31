@@ -1,11 +1,9 @@
 ﻿namespace InventoryManagementSystem;
 
-public class Product : IStorable
+public class Product : Storable
 {
     private static int _numberOfProducts;
-    public string Name { get; set; }
-    public int Quantity { get; set; }
-
+    
     private int _productNumber;
 
     public Product()
