@@ -2,21 +2,26 @@
 
 public class Product : IStorable
 {
-    private static int _productNumber;
+    private static int _numberOfProuducts;
     public string Name { get; set; }
     public int Quantity { get; set; }
 
+    private int _productNumber;
+
     public Product()
     {
+        _productNumber = _numberOfProuducts;
         Name = "Product" + _productNumber;
         Quantity = 0;
-        _productNumber++;
+        _numberOfProuducts++;
     }
 
     public Product(string name, int quantity)
     {
+        _productNumber = _numberOfProuducts;
         Name = name;
         Quantity = quantity;
-        _productNumber++;
+        _numberOfProuducts++;
     }
+    
 }
