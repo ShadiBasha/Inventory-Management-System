@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
+using System.Net.Mime;
 using System.Runtime.InteropServices.ComTypes;
 
 namespace InventoryManagementSystem;
@@ -153,6 +155,8 @@ public class Program
                 break;
             case '5':
                 SearchForAProduct();
+                break;
+            default : Environment.Exit(0);
                 break;
         }
     }
