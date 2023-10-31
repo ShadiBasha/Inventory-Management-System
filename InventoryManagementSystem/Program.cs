@@ -1,9 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Globalization;
-using System.Net.Mime;
-using System.Runtime.InteropServices.ComTypes;
-
+﻿
 namespace InventoryManagementSystem;
 
 public class Program
@@ -15,13 +10,11 @@ public class Program
         Console.WriteLine("Fill the needed data");
         Console.WriteLine("Product name : ");
         Console.ReadLine();
-        string? name = Console.ReadLine();
+        string name = new string(Console.ReadLine());
         Console.WriteLine("Product Price : ");
-        int price = 0;
-        price = Convert.ToInt32(Console.ReadLine());
+        int price = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Product quantity : ");
-        int quantity = 0;
-        quantity = Convert.ToInt32(Console.ReadLine());
+        int quantity = Convert.ToInt32(Console.ReadLine());
         Product newProduct = new Product(name, price, quantity);
         Inventory.AddAnItem(newProduct);
         Console.WriteLine("----------------------------------------");
@@ -61,7 +54,7 @@ public class Program
         {
             case 1:
                 Console.WriteLine("Enter the new Name for the product");
-                string newName = Console.ReadLine();
+                string newName = new string(Console.ReadLine());
                 productToEdit.Name = newName;
                 break;
             case 2:
@@ -76,7 +69,6 @@ public class Program
                 break;
         }
         MainPage();
-        return;
     }
 
     static void DeleteAProduct()
@@ -98,7 +90,7 @@ public class Program
     {
         Console.WriteLine("Please enter the name of the product");
         Console.ReadLine();
-        string? name = Console.ReadLine();
+        string name = new string(Console.ReadLine());
         Product product = Inventory.GetItemByName(name);
         if (product.IsNull)
         {
@@ -122,7 +114,6 @@ public class Program
         Console.WriteLine(searchedForProduct.ToString());
         Console.WriteLine("----------------------------------------");
         MainPage();
-        return;
     }
 
     public static void MainPage()

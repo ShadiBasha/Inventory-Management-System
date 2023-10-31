@@ -2,7 +2,7 @@
 
 public class Inventory
 {
-    private List<Product>? _storage;
+    private List<Product> _storage;
 
     public Inventory()
     {
@@ -16,17 +16,16 @@ public class Inventory
 
     public void AddAnItem(Product item)
     {
-        _storage?.Add(item);
+        _storage.Add(item);
     }
 
     public string ViewAllItems()
     {
         var allItems = "";
-        if (_storage != null)
-            foreach (var item in _storage)
-            {
-                allItems += item?.ToString() + "\n";
-            }
+        foreach (var item in _storage)
+        {
+            allItems += item + "\n";
+        }
         return allItems;
     }
 
