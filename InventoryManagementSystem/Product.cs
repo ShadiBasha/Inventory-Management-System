@@ -4,9 +4,33 @@ namespace InventoryManagementSystem;
 
 public class Product : INullable
 {
-    public int Quantity { get; set; }
     public string Name { get; set; }
-    public int Price { get; set; }
+    private int _price;
+    private int _quantity;
+    public int Quantity
+    {
+        get => _quantity;
+        set
+        {
+            if (value < 0)
+                _quantity = 0;
+            else
+                _quantity = value;
+        }
+    }
+    
+    public int Price
+    {
+        get => _price;
+        set
+        {
+            if (value < 0)
+                _price = 0;
+            else
+                _price = value;
+        }
+    }
+
     public bool IsNull { get; set; }
     
     private static int _numberOfProducts;
